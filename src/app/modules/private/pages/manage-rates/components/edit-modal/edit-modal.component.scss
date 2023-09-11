@@ -1,0 +1,235 @@
+@import "../../../../../../../scss/variables.scss";
+
+.edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 25px 30px;
+    animation: enterContentAnimation 0.6s ease-in-out;
+    &__header{
+        display: flex;
+        align-items: center;
+        margin: 0 0 40px 0;
+        h1{
+            color: $text-color;
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        svg{
+            width: 24px;
+            min-width: 24px;
+            height: 24px;
+            min-height: 24px;
+            stroke: $text-color;
+            cursor: pointer;
+            transition: stroke .2s;
+            &:hover{
+                stroke: $primary-color;
+            }
+        }
+    }
+    &__content{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 40px;
+            h1{
+                color: $text-color;
+                font-family: 'Inter', sans-serif;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin: 0 0 -24px 0;
+            }
+            section{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                row-gap: 20px;
+                label{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    position: relative;
+                    row-gap: 8px;
+                    &.toggle{
+                        position: relative;
+                        row-gap: 15px;
+                        input{
+                            display: none;
+                            &:checked{
+                                & ~ label{
+                                    background-color: $primary-color-hover;
+                                    &::before{
+                                        background-color: $primary-color;
+                                        transform: translateX(20px);
+                                        transition: all .2s;
+                                    }
+                                    &:after{
+                                        content: 'ativo';
+                                        color: $primary-color;
+                                    }
+                                }
+                            }
+                        }
+                        label{
+                            position: relative;
+                            width: 100%;
+                            max-width: 43px;
+                            height: 11px;
+                            background-color: $gray-placeholder;
+                            border-radius: 15px;
+                            cursor: pointer;
+                            transition: all .2s;
+                            &::before{
+                                content: '';
+                                position: absolute;
+                                width: 25px;
+                                min-width: 25px;
+                                height: 25px;
+                                min-height: 25px;
+                                background: $gray-disabled;
+                                border-radius: 50%;
+                                top: -7px;
+                                left: -1px;
+                                transition: all .2s;
+                            }
+                            &:after{
+                                content: 'inativo';
+                                position: absolute;
+                                top: -5px;
+                                left: 52px;
+                                color: $gray-placeholder;
+                                font-family: 'Inter', sans-serif;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                                transition: all .2s;
+                            }
+                        }
+                    }
+                    input{
+                        min-height: 48px;
+                        border-radius: 12px;
+                        border: 1px solid $gray-disabled;
+                        padding: 15px 15px 16px;
+                        color: $primary-color;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        &.upper{
+                            text-transform: uppercase; 
+                        }
+                        &:focus{
+                            border: 1px solid $primary-color;
+                            outline: 1px solid $primary-color;;
+                            box-shadow: unset;
+                            color: $primary-color;
+                            &::placeholder{
+                                color: $primary-color;
+                            }
+                        }
+                        &::placeholder{
+                            color: $gray-placeholder;
+                            font-family: 'Inter', sans-serif;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                        }
+                    }
+                    button{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        column-gap: 8px;
+                        min-height: 48px;
+                        border-radius: 12px;
+                        padding: 15px 15px 16px;
+                        color: $primary-color;
+                        transition: all .2s;
+                        svg{
+                            width: 24px;
+                            min-width: 24px;
+                            height: 24px;
+                            min-height: 24px;
+                            stroke: $primary-color;
+                            transition: stroke .2s;
+                        }
+                        &.select-itens{
+                            border: 1px solid $gray-selected;
+                            background: $white;
+                            p{
+                                color: $primary-color;
+                                font-family: 'Inter', sans-serif;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: normal;
+                                width: unset;
+                                margin: 0;
+                            }
+                            &:hover{
+                                background: $gray-selected;
+                            }
+                        }
+                        &.edit-itens{
+                            border: 1px solid $primary-color;
+                            outline: 1px solid $primary-color;
+                            background: transparent;
+                            p{
+                                color: $primary-color;
+                                font-family: 'Inter';
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: normal;
+                                width: unset;
+                                margin: 0;
+                                transition: color .2s;
+                            }
+                            &:hover{
+                                border: 1px solid $primary-color;
+                                outline: 1px solid $primary-color;
+                                background: $primary-color;
+                                p{
+                                    color: $white;
+                                }
+                                svg{
+                                    stroke: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+                h1{
+                    color: $text-color;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    margin: 0;
+                    strong{
+                        color: $text-color;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                    }
+                }
+            }
+            .submit{
+                margin: 25px auto 0 0;
+                font-size: 14px !important;
+            }
+    }
+}

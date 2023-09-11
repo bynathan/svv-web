@@ -1,0 +1,342 @@
+<div class="create-inspection">
+    <ng-container *ngIf="formStage == 0">
+        <div class="create-inspection__form conductor">
+            <div class="create-inspection__form--header">
+                <h1>Sobre o condutor</h1>
+                <p>Campos com (*) são obrigatório.</p> 
+            </div>
+            <form>
+                <section>
+                    <label>
+                        <h1>Nome *</h1>
+                        <input type="text" placeholder="ex: João">
+                    </label>
+                    <label>
+                        <h1>Sobrenome *</h1>
+                        <input type="text" placeholder="ex: da Silva">
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Nome completo <strong>(não é obrigatório)</strong></h1>
+                        <input type="text" placeholder="ex: João da Silva Almeida Junior">
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>CPF <strong>(não é obrigatório)</strong></h1>
+                        <input type="text" placeholder="ex: 999.999.999-99" (input)="cpfMask($event)">
+                    </label>
+                </section>
+                <section class="press">
+                    <h1>Habilitado *</h1>
+                    <div>
+                        <label>
+                            <input type="radio" name="habilited">
+                            <p>Sim</p>
+                        </label>
+                        <label>
+                            <input type="radio" name="habilited">
+                            <p>Não</p>
+                        </label>
+                    </div>
+                </section>
+                <input class="submit" type="button" value="Próximo" (click)="nextStage(1)">
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="formStage == 1">
+        <div class="create-inspection__form vehicle">
+            <div class="create-inspection__form--header no-description">
+                <h1>Sobre o veículo</h1>
+            </div>
+            <form>
+                <section class="press">
+                    <h1>Qual o tipo *</h1>
+                    <div>
+                        <label>
+                            <input type="radio" name="vehicle" (click)="alternateVeichle('car')">
+                            <p>Carro</p>
+                        </label>
+                        <label>
+                            <input type="radio" name="vehicle" (click)="alternateVeichle('bike')">
+                            <p>Moto</p>
+                        </label>
+                    </div>
+                </section>
+                <section>
+                    <label>
+                        <h1>Marca *</h1>
+                        <input type="text" placeholder="ex: Fiat">
+                    </label>
+                    <label>
+                        <h1>Modelo *</h1>
+                        <input type="text" placeholder="ex: Uno">
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Cor *</h1>
+                        <input type="text" placeholder="ex: Vermelho">
+                    </label>
+                    <label>
+                        <h1>Placa <strong>(não é obrigatório)</strong></h1>
+                        <input class="upper" type="text" placeholder="ex: JHE5487">
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Estado de origem <strong>(não é obrigatório)</strong></h1>
+                        <form [formGroup]="stateForm">
+                            <input
+                              formControlName="state"
+                              [typeahead]="state"
+                              (clear)="onClearStateForm($event)"
+                              (focus)="stateForm.patchValue({ state: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label>
+                    <label>
+                        <h1>Cidade de origem <strong>(não é obrigatório)</strong></h1>
+                        <form [formGroup]="cityForm">
+                            <input
+                              formControlName="city"
+                              [typeahead]="city"
+                              (clear)="onClearCityForm($event)"
+                              (focus)="cityForm.patchValue({ city: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Tacômetro <strong>(não é obrigatório)</strong></h1>
+                        <input type="text" placeholder="Apenas números">
+                    </label>
+                    <label>
+                        <h1>Chassi <strong>(não é obrigatório)</strong></h1>
+                        <input type="text" placeholder="ex: GLKYFSH516MT547F" class="quantity upper" maxlength="17" [(ngModel)]="inputText1" (input)="updateCounter(1)" name="chassi">
+                        <p class="quantity-character">{{ inputText1.length }}/17</p>
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Número do motor <strong>(não é obrigatório)</strong></h1>
+                        <input type="text" placeholder="ex: GLKYFSH516MT547F" class="quantity upper" maxlength="17" [(ngModel)]="inputText2" (input)="updateCounter(2)" name="numeroMotor">
+                        <p class="quantity-character">{{ inputText2.length }}/17</p>
+                    </label>
+                    <label>
+                        <h1>Possuía chaves? *</h1>
+                        <form [formGroup]="keyForm">
+                            <input
+                              formControlName="key"
+                              [typeahead]="key"
+                              (clear)="onClearKeyForm($event)"
+                              (focus)="keyForm.patchValue({ key: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label>
+                </section>
+                <section *ngIf="veichle != ''">
+                    <label>
+                        <h1>Equipamentos obrigatórios *</h1>
+                        <button *ngIf="true" class="select-itens" (click)="openItensModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M21.6602 10.4395L20.6802 14.6195C19.8402 18.2295 18.1802 19.6895 15.0602 19.3895C14.5602 19.3495 14.0202 19.2595 13.4402 19.1195L11.7602 18.7195C7.59018 17.7295 6.30018 15.6695 7.28018 11.4895L8.26018 7.29952C8.46018 6.44952 8.70018 5.70952 9.00018 5.09952C10.1702 2.67952 12.1602 2.02952 15.5002 2.81952L17.1702 3.20952C21.3602 4.18952 22.6402 6.25952 21.6602 10.4395Z" stroke="$primary-color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12.6403 8.52961L17.4903 9.75961M11.6603 12.3996L14.5603 13.1396M15.0603 19.3896C14.4403 19.8096 13.6603 20.1596 12.7103 20.4696L11.1303 20.9896C7.16034 22.2696 5.07034 21.1996 3.78034 17.2296L2.50034 13.2796C1.22034 9.30961 2.28034 7.20961 6.25034 5.92961L7.83034 5.40961C8.24034 5.27961 8.63034 5.16961 9.00034 5.09961C8.70034 5.70961 8.46034 6.44961 8.26034 7.29961L7.28034 11.4896C6.30034 15.6696 7.59034 17.7296 11.7603 18.7196L13.4403 19.1196C14.0203 19.2596 14.5603 19.3496 15.0603 19.3896Z" stroke="$primary-color" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p>Marcar itens</p>
+                        </button>
+                        <button *ngIf="false" class="edit-itens">
+                            <p>Editar equipamentos</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 20H21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </button>
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Motivo da apreensão *</h1>
+                        <textarea type="text" placeholder="ex: Condutor sem CNH"></textarea>
+                    </label>
+                </section>
+                <div class="action">
+                    <input class="back" type="button" value="Voltar" (click)="nextStage(0)">
+                    <input class="submit" type="button" value="Próximo" (click)="nextStage(2)">
+                </div>
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="formStage == 2">
+        <div class="create-inspection__form location">
+            <div class="create-inspection__form--header no-description">
+                <h1>Sobre o local</h1>
+            </div>
+            <form>
+                <section>
+                    <label>
+                        <h1>Endereço *</h1>
+                        <input type="text" placeholder="ex: Mozart Pinto, 1444">
+                    </label>
+                </section>
+                <section>
+                    <label>
+                        <h1>Bairro da apreensão</h1>
+                        <button *ngIf="true" class="select-itens" (click)="openAnddressModal()">
+                            <p>Adicionar bairro</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M11.9999 13.4304C12.4096 13.4304 12.8153 13.3497 13.1939 13.1929C13.5724 13.0361 13.9163 12.8063 14.2061 12.5166C14.4958 12.2269 14.7256 11.8829 14.8824 11.5044C15.0392 11.1259 15.1199 10.7202 15.1199 10.3104C15.1199 9.90071 15.0392 9.49499 14.8824 9.11646C14.7256 8.73792 14.4958 8.39397 14.2061 8.10426C13.9163 7.81454 13.5724 7.58472 13.1939 7.42793C12.8153 7.27113 12.4096 7.19043 11.9999 7.19043C11.1724 7.19043 10.3788 7.51914 9.79371 8.10426C9.2086 8.68937 8.87988 9.48295 8.87988 10.3104C8.87988 11.1379 9.2086 11.9315 9.79371 12.5166C10.3788 13.1017 11.1724 13.4304 11.9999 13.4304Z" stroke="$primary-color" stroke-width="1.5"/>
+                                <path d="M3.61971 8.49C5.58971 -0.169998 18.4197 -0.159997 20.3797 8.5C21.5297 13.58 18.3697 17.88 15.5997 20.54C14.6318 21.4735 13.3395 21.9952 11.9947 21.9952C10.65 21.9952 9.35763 21.4735 8.38971 20.54C5.62971 17.88 2.46971 13.57 3.61971 8.49Z" stroke="$primary-color" stroke-width="1.5"/>
+                            </svg>
+                        </button>
+                        <button *ngIf="false" class="edit-itens">
+                            <p>Editar bairro</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 20H21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16.5 3.50023C16.8978 3.1024 17.4374 2.87891 18 2.87891C18.2786 2.87891 18.5544 2.93378 18.8118 3.04038C19.0692 3.14699 19.303 3.30324 19.5 3.50023C19.697 3.69721 19.8532 3.93106 19.9598 4.18843C20.0665 4.4458 20.1213 4.72165 20.1213 5.00023C20.1213 5.2788 20.0665 5.55465 19.9598 5.81202C19.8532 6.06939 19.697 6.30324 19.5 6.50023L7 19.0002L3 20.0002L4 16.0002L16.5 3.50023Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </label>
+                </section>
+                <div class="action">
+                    <input class="back" type="button" value="Voltar" (click)="nextStage(1)">
+                    <input class="submit" type="button" value="Próximo" (click)="nextStage(3)">
+                </div>
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="formStage == 3">
+        <div class="create-inspection__form sinister">
+            <div class="create-inspection__form--header no-description">
+                <h1>Sinistro</h1>
+            </div>
+            <form>
+                <section class="press">
+                    <h1>Envolvido em acidente? *</h1>
+                    <div>
+                        <label>
+                          <input type="radio" name="accident" (click)="changeOnAccident(true)" />
+                          <p>Sim</p>
+                        </label>
+                        <label>
+                          <input type="radio" name="accident" (click)="changeOnAccident(false)" checked/>
+                          <p>Não</p>
+                        </label>
+                      </div>
+                </section>
+                <section *ngIf="onAccident">
+                    <label>
+                        <h1>Qual o tipo de acidente? *</h1>
+                        <form [formGroup]="accidentForm">
+                            <input
+                              formControlName="accident"
+                              [typeahead]="accident"
+                              (clear)="onClearAccidentForm($event)"
+                              (focus)="accidentForm.patchValue({ accident: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label>
+                </section>
+                <section *ngIf="onAccident">
+                    <label>
+                        <h1>Com vitimas? *</h1>
+                        <form [formGroup]="victimsForm">
+                            <input
+                              formControlName="victims"
+                              [typeahead]="victims"
+                              (clear)="onClearVictimsForm($event)"
+                              (focus)="victimsForm.patchValue({ victims: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                              [(ngModel)]="inputValue"
+                              (ngModelChange)="changeOnVictims()"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label>
+                </section>
+                <section *ngIf="onAccident && onVictims">
+                    <label>
+                        <h1>Quantidade de vítimas *</h1>
+                        <form [formGroup]="victimsQuantityForm">
+                            <input
+                              formControlName="victimsQuantity"
+                              [typeahead]="victimsQuantity"
+                              (clear)="onClearVictimsQuantityForm($event)"
+                             (focus)="victimsQuantityForm.patchValue({ victimsQuantity: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label> 
+                    <label>
+                        <h1>Vítimas fatais? *</h1>
+                        <form [formGroup]="victimsFatalitiesForm">
+                            <input
+                              formControlName="victimsFatalities"
+                              [typeahead]="victimsFatalities"
+                              (clear)="onClearVictimsFatalitiesForm($event)"
+                              (focus)="victimsFatalitiesForm.patchValue({ victimsFatalities: '' })"
+                              [typeaheadMinLength]="0"
+                              placeholder="Selecionar"
+                            >
+                            <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                              <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </form>
+                    </label> 
+                </section>
+                <div class="action">
+                    <input class="back" type="button" value="Voltar" (click)="nextStage(2)">
+                    <input class="submit" type="button" value="Próximo" (click)="nextStage(4)">
+                </div>
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="formStage == 4">
+        <div class="create-inspection__form observation">
+            <div class="create-inspection__form--header no-description">
+                <h1>Observações gerais</h1>
+            </div>
+            <form>
+                <section>
+                    <label>
+                        <h1>Motivo da apreensão *</h1>
+                        <textarea type="text" class="observation" placeholder="Se achar necessário acrescente outras explicações aqui."></textarea>
+                    </label>
+                </section>
+                <div class="action">
+                    <input class="back" type="button" value="Voltar" (click)="nextStage(3)">
+                    <input class="submit" type="button" value="Salvar vistoria" (click)="openConfirmModal()">
+                </div>
+            </form>
+        </div>
+    </ng-container>
+</div>

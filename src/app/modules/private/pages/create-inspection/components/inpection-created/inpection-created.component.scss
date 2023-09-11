@@ -1,0 +1,134 @@
+@import "../../../../../../../scss/variables.scss";
+
+.created{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+    max-width: 314px;
+    margin: 45px auto 100px auto;
+    animation: enterContentAnimation 0.6s ease-in-out;
+    .logo{
+        width: 46px;
+        min-width: 46px;
+        height: 55px;
+        min-height: 55px;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+            color: $primary-color;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin: 0 0 34px 0;
+        }
+        img{
+            width: 90px;
+            max-width: 90px;
+            height: 84px;
+            min-height: 84px;
+        }
+        p{
+            color: $gray-bold;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            max-width: 290px;
+            margin: 75px 0 38px 0;
+        }
+        button{
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 16px;
+            border-radius: 12px;
+            transition: background .2s;
+            p{
+                margin: 0;
+                width: unset;
+            }
+            &.new{
+                margin: 0 0 22px 0;
+                background: $primary-color;
+                svg{
+                    width: 24px;
+                    min-width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                }
+                p{
+                    color: $white;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                }
+                &:hover{
+                    background: #093466;
+                }
+            }
+            &.impress{
+                border: 2px solid $text-color;
+                margin: 0 0 32px 0;
+                background: transparent;
+                svg{
+                    width: 24px;
+                    min-width: 24px;
+                    height: 24px;
+                    min-height: 24px;
+                    stroke: $black-alt;
+                    transition: stroke .2s;
+                }
+                p{
+                    color: $text-color;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    transition: color .2s;
+                }
+                &:hover{
+                    background: $text-color;
+                    p{
+                        color: $white;
+                    }
+                    svg{
+                        stroke: $white;
+                    }
+                }
+            }
+        }
+        a{
+            color: $text-color;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            width: unset;
+            transition: color .2s;
+            cursor: pointer;
+            &:hover{
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+@media(max-width: 330px){
+    .created{
+        padding: 0 15px;
+    }
+}

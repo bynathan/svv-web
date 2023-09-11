@@ -1,0 +1,172 @@
+@import "../../../../../../../scss/variables.scss";
+
+.address{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 25px;
+    padding: 32px 27px 28px;
+    animation: enterContentAnimation 0.6s ease-in-out;
+    h1{
+        color: $black;
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin: 0;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 8px;
+        h1{
+            color: $text-color;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+        &__options{
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            column-gap: 20;
+            margin: 0 0 60px 0;
+            div{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                row-gap: 14px;
+                label{
+                    display: flex;
+                    align-items: center;
+                    column-gap: 8px;
+                    position: relative;
+                    cursor: pointer;
+                    .content{
+                        order: 2;
+                        display: unset;
+                        width: 24px;
+                        min-width: 24px;
+                        height: 24px;
+                        min-height: 24px;
+                        border-radius: 50%;
+                        background: $white;
+                        border: 1px solid $gray-disabled-alt;
+                        transition: all .2s;
+                        position: relative;
+                        &::after{
+                            content: "";
+                            display: none;
+                            height: 14px;
+                            width: 14px;
+                            border-radius: 50%;
+                            background: $primary-color;
+                            position: absolute;
+                            top: 4px;
+                            left: 4px;
+                            transform: rotate(45deg);
+                            transition: all .2s;
+                        }
+                    }
+                    input{
+                        order: 1;
+                        width: unset;
+                        cursor: pointer;
+                        width: 20px;
+                        min-width: 20px;
+                        height: 20px;
+                        min-height: 20px;
+                        margin: 2px 0 0 2px;
+                        border: none;
+                        display: none;
+                        &:checked{
+                            & ~ p{
+                                color: $primary-color;
+                            }
+                            & ~ .content{
+                                background: $white;
+                                border: 1px solid $primary-color;
+                                &::after{
+                                    display: unset;
+                                }
+                            }
+                        }
+                    }
+                    p{
+                        order: 3;
+                        color: $black-alt;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        margin: 0;
+                        strong{
+                            font-size: 12px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+        &__actions{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px 0 0;
+            column-gap: 20px;
+            input{
+                max-width: 338px;
+                font-size: 14px;
+                margin: 0;
+            }
+            a{
+                color: $gray-bold;
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                width: unset;
+                cursor: pointer;
+                transition: color .2s;
+                &:hover{
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 460px){
+    .address{
+        &__content{
+            h1{
+                font-size: 16px;
+            }
+            &__options{
+                flex-direction: column;
+                row-gap: 14px;
+            }
+            &__actions{
+                flex-direction: column;
+                align-items: center;
+                row-gap: 28px;
+                padding: 0;
+                .submit{
+                    max-width: unset;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 375px){
+    .address{
+        padding: 32px 15px 28px;
+    }
+}

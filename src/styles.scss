@@ -1,0 +1,308 @@
+@import "./scss/reset.scss";
+@import "./scss/variables.scss";
+@import "./scss/animation.scss";
+
+/** Importing Bootstrap SCSS file */
+@import "./node_modules/bootstrap/scss/bootstrap";
+/** Importing Datepicker SCSS file */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/** Style modal bug layout fixed */
+.modal::-webkit-scrollbar {
+  width: 0;
+}
+
+body {
+  &.modal-open {
+    padding: 0 17px 0 0 !important;
+    .modal-dialog {
+      padding: 0 17px 0 0 !important;
+    }
+  }
+  &.menu-open{
+    overflow-y: hidden !important;
+  }
+}
+
+@media (max-width: 834px) {
+  body.modal-open {
+    padding-right: unset !important;
+    .modal-dialog {
+      padding: unset !important;
+    }
+  }
+}
+
+/** Style modal */
+.modal-dialog {
+  &.recover-modal {
+    max-width: 415px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.warn-important-modal{
+    max-width: 415px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.itens-modal {
+    max-width: 552px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.address-modal {
+    max-width: 552px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.confirm-modal {
+    max-width: 360px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.confirm-delete-modal {
+    max-width: 360px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.edit-modal {
+    max-width: 360px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+  &.warn-important-modal {
+    max-width: 360px !important;
+    .modal-content {
+      border-radius: 20px !important;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .modal-dialog {
+    &.warn-important-modal{
+      margin: 20px auto;
+    }
+    &.recover-modal {
+      margin: 20px auto;
+    }
+    &.confirm-modal {
+      margin: 20px auto;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .modal-dialog {
+    &.recover-modal {
+      margin: 20px 15px !important;
+    }
+    &.confirm-modal {
+      margin: 20px 15px !important;
+    }
+    &.warn-important-modal {
+      margin: 20px 15px !important;
+    }
+  }
+}
+
+/* Style buttom submit */
+
+.submit{
+  min-height: 55px;
+  border-radius: 10px;
+  background: $primary-color;
+  color: $white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 56px 0 34px 0;
+  cursor: pointer;
+  transition: background .2s;
+  &:hover{
+      background: $primary-color-hover;
+  }
+  &:disabled{
+      background: $gray-disabled !important;
+      color: $gray-disabled-alt !important;
+      cursor: not-allowed;
+  }
+}
+
+/* Style do dropdown */
+
+.dropdown{
+  &.open{
+    display: flex !important;
+    flex-direction: column;
+    box-shadow: 0px 0px 25px 0px rgba(8, 69, 140, 0.15);
+    border-radius: 12px;
+    max-height: 275px;
+    row-gap: 24px;
+    padding: 30px !important;
+    button{
+      padding: 0 !important;
+      span{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    &::-webkit-scrollbar{
+      width: 0px;
+    }
+  }
+  &-item{
+    &.active{
+      background: $white;
+      span{
+        color: $primary-color;
+        border-bottom: 1px solid $primary-color;
+      }
+    }
+    span{
+      color: $text-color;
+      font-family: 'Inter';
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      transition: all .2s;
+    }
+  }
+}
+
+/* Style do tooltip */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+  width: unset;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  color: $white;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  pointer-events: none;
+  position: absolute;
+  display: none;
+  opacity: 0;
+}
+
+[data-tooltip]:before {
+  content: "";
+  border: 5px solid transparent;
+  z-index: 100;
+}
+
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  text-align: center;
+  max-width: 201px;
+  overflow: hidden;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #292f31;
+  color: #ffffff;
+  z-index: 99;
+  text-align: start;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  display: block;
+  opacity: 1;
+}
+
+[data-tooltip]:not([data-flow])::before,
+[data-tooltip][data-flow="top"]::before {
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #292f31;
+}
+
+[data-tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::after {
+  bottom: calc(100% + 5px);
+}
+
+[data-tooltip]:not([data-flow])::before,
+[tooltip]:not([data-flow])::after,
+[data-tooltip][data-flow="top"]::before,
+[data-tooltip][data-flow="top"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, -4px);
+  transform: translate(-50%, -4px);
+  text-align: center;
+}
+
+[data-tooltip][data-flow="bottom"]::before {
+  top: 100%;
+  border-top-width: 0;
+  border-bottom-color: #292f31;
+}
+
+[data-tooltip][data-flow="bottom"]::after {
+  top: calc(100% + 5px);
+}
+
+[data-tooltip][data-flow="bottom"]::before,
+[data-tooltip][data-flow="bottom"]::after {
+  left: 50%;
+  -webkit-transform: translate(-50%, 8px);
+  transform: translate(-50%, 8px);
+}
+
+[data-tooltip][data-flow="left"]::before {
+  top: 50%;
+  border-right-width: 0;
+  border-left-color: #292f31;
+  left: calc(0em - 5px);
+  -webkit-transform: translate(-8px, -50%);
+  transform: translate(-8px, -50%);
+}
+
+[data-tooltip][data-flow="left"]::after {
+  top: 50%;
+  right: calc(100% + 5px);
+  -webkit-transform: translate(-8px, -50%);
+  transform: translate(-8px, -50%);
+}
+
+[data-tooltip][data-flow="right"]::before {
+  top: 50%;
+  border-left-width: 0;
+  border-right-color: #292f31;
+  right: calc(0em - 5px);
+  -webkit-transform: translate(8px, -50%);
+  transform: translate(8px, -50%);
+}
+
+[data-tooltip][data-flow="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  -webkit-transform: translate(8px, -50%);
+  transform: translate(8px, -50%);
+}
+
+[data-tooltip=""]::after,
+[data-tooltip=""]::before {
+  display: none !important;
+}

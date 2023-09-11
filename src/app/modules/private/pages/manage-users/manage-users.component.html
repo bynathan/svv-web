@@ -1,0 +1,121 @@
+<div class="manage-users">
+    <h1 class="manage-users__title">Gerenciar usuários</h1>
+    <div class="manage-users__search">
+        <div class="input-search">
+            <input type="text" placeholder="Busque por nome, CPF ou e-mail do agente">
+            <svg class="search" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M0.0247006 7.87823C0.162935 9.46532 0.887052 10.9532 2.06688 12.0735C3.24671 13.1938 4.80475 13.8732 6.46033 13.9891C8.11592 14.1051 9.76012 13.6501 11.0972 12.7061L14.2375 15.7092C14.4312 15.8952 14.6938 15.9996 14.9677 15.9996C15.2415 15.9996 15.5043 15.8953 15.6978 15.7093C15.8915 15.5235 16.0002 15.2714 16 15.0085C16.0002 14.7458 15.8915 14.4937 15.698 14.3078L12.5681 11.2947C13.9283 9.5308 14.2998 7.23853 13.5616 5.1613C12.8236 3.08439 11.0702 1.48725 8.86994 0.888013C6.66989 0.288729 4.30337 0.763496 2.53789 2.15874C0.772543 3.55382 -0.16685 5.69131 0.0244658 7.87791L0.0247006 7.87823ZM6.96867 2.62946C8.26895 2.62946 9.51591 3.12511 10.4353 4.00726C11.3547 4.88941 11.8713 6.08607 11.8713 7.33363C11.8713 8.58119 11.3547 9.77768 10.4353 10.6598C9.51591 11.542 8.2689 12.0376 6.96867 12.0376C5.66844 12.0376 4.42124 11.542 3.50184 10.6598C2.58245 9.77768 2.06587 8.58119 2.06587 7.33363C2.06587 6.08607 2.58245 4.88941 3.50184 4.00726C4.42124 3.12511 5.66844 2.62946 6.96867 2.62946Z" />
+            </svg>
+        </div>
+        <div class="new" [routerLink]="['/app/register-user']">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6 12H18M12 18V6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Adicionar novo</p>
+        </div>
+    </div>
+    <div class="manage-users__filter">
+        <form [formGroup]="situationForm">
+            <input                               
+            formControlName="situation"
+            [typeahead]="situation"
+            (clear)="onClearSituationForm($event)"
+            (focus)="situationForm.patchValue({ situation: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Por situação"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+        <form [formGroup]="conductorForm">
+            <input             
+            formControlName="conductor"
+            [typeahead]="conductor"
+            (clear)="onClearConductorForm($event)"
+            (focus)="conductorForm.patchValue({ conductor: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Por condutor"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+    </div>
+    <div class="manage-users__lista">
+        <div class="item title">
+            <label>Criado em</label>
+            <label>Nome</label>
+            <label>CPF</label>
+            <label>E-mail</label>
+            <label>Status</label>
+            <label>Ação</label>
+        </div>
+        <div class="item">
+            <div class="item-container">
+                <div>
+                    <label class="check">
+                        <input type="checkbox">
+                        <div class="content"></div>
+                    </label>
+                </div>   
+                <label>2023/08/09</label> 
+            </div>
+            <label class="ellipsis">João</label>
+            <label class="ellipsis">12345678900</label>
+            <label>seunome@gmail.com</label>
+        <div>
+            <label class="toggle">
+                <input type="checkbox" id="toggle" class="toggle-input" checked>
+                <label for="toggle" class="toggle-label"></label>
+            </label>
+        </div>
+        <div class="actions">
+            <span data-tooltip="Editar" data-flow="top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M13.2594 3.60022L5.04936 12.2902C4.73936 12.6202 4.43936 13.2702 4.37936 13.7202L4.00936 16.9602C3.87936 18.1302 4.71936 18.9302 5.87936 18.7302L9.09936 18.1802C9.54936 18.1002 10.1794 17.7702 10.4894 17.4302L18.6994 8.74022C20.1194 7.24022 20.7594 5.53022 18.5494 3.44022C16.3494 1.37022 14.6794 2.10022 13.2594 3.60022Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.89 5.0498C12.0996 6.39066 12.7486 7.62394 13.735 8.55605C14.7214 9.48816 15.9894 10.0663 17.34 10.1998M3 21.9998H21" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <span data-tooltip="Deletar" data-flow="top">
+                <svg (click)="openConfirmDeleteModal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 5.98C17.67 5.65 14.32 5.48 10.98 5.48C9 5.48 7.02 5.58 5.04 5.78L3 5.98M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97M18.85 9.14L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5H13.66M9.5 12.5H14.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </div>
+        </div>
+        <div class="item">
+            <div class="item-container">
+                <div>
+                    <label class="check">
+                        <input type="checkbox">
+                        <div class="content"></div>
+                    </label>
+                </div>   
+                <label>2023/08/09</label> 
+            </div>
+            <label class="ellipsis">Pedro</label>
+            <label class="ellipsis">12345678900</label>
+            <label>seunome@gmail.com</label>
+            <div>
+                <label class="toggle">
+                    <input type="checkbox" id="toggle2" class="toggle-input">
+                    <label for="toggle2" class="toggle-label"></label>
+                </label>
+            </div>
+            <div class="actions">
+                <span data-tooltip="Editar" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M13.2594 3.60022L5.04936 12.2902C4.73936 12.6202 4.43936 13.2702 4.37936 13.7202L4.00936 16.9602C3.87936 18.1302 4.71936 18.9302 5.87936 18.7302L9.09936 18.1802C9.54936 18.1002 10.1794 17.7702 10.4894 17.4302L18.6994 8.74022C20.1194 7.24022 20.7594 5.53022 18.5494 3.44022C16.3494 1.37022 14.6794 2.10022 13.2594 3.60022Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.89 5.0498C12.0996 6.39066 12.7486 7.62394 13.735 8.55605C14.7214 9.48816 15.9894 10.0663 17.34 10.1998M3 21.9998H21" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Deletar" data-flow="top">
+                    <svg (click)="openConfirmDeleteModal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 5.98C17.67 5.65 14.32 5.48 10.98 5.48C9 5.48 7.02 5.58 5.04 5.78L3 5.98M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97M18.85 9.14L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5H13.66M9.5 12.5H14.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

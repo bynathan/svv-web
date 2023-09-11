@@ -1,0 +1,41 @@
+/** Aqui serão as cores da aplicação */
+
+/**
+  ================= IMPORTANTE =================
+  Em todo o código CSS que será feito,
+  utilizar essas variáveis e não o token da cor
+
+  Ex:
+
+  color: #ff5473; (ERRADO)
+  color: $secondary-color; (CERTO)
+*/
+
+$primary-color: #08458C;
+$primary-color-hover: #093466;
+$primary-color-hover-alt: #A5C1E1;
+$primary-color-disabled: #C3D5EB;
+$primary-color-light: #F4F4F4;
+$primary-color-menu: #E4ECF5;
+$secondary-color: #F8EE4A;
+$secondary-color-hover: #FFD126;
+$text-color: #1F1F1F;
+$text-color-disabled: #749CCB;
+$white: #FFF;
+$black: #000;
+$black-alt: #111716;
+$gray: #C6C5C5;
+$gray-alt: #E2E2E2;
+$gray-subtitle: #949494;
+$gray-bold: #676767;
+$gray-selected: #C3D5EB;
+$gray-disabled: #DCDCDC;
+$gray-disabled-alt: #B3B3B3;
+$gray-placeholder: #7C7C7C;
+$red: #DB2D22;
+$red-hover: #8f221a;
+$orange: #DB6F22;
+$orange-light: #FEEFE3;
+$blue: #5322BD;
+$blue-ligth: #3B95FF; 
+$green-bold: #079F72;

@@ -1,0 +1,280 @@
+<div class="manage-inspections">
+    <h1 class="manage-inspections__title">Gerenciar vistorias </h1>
+    <div class="manage-inspections__search">
+        <div class="input-search">
+            <input type="text" placeholder="Busque por nome, placa, tipo de veículo ou agente">
+            <svg class="search" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M0.0247006 7.87823C0.162935 9.46532 0.887052 10.9532 2.06688 12.0735C3.24671 13.1938 4.80475 13.8732 6.46033 13.9891C8.11592 14.1051 9.76012 13.6501 11.0972 12.7061L14.2375 15.7092C14.4312 15.8952 14.6938 15.9996 14.9677 15.9996C15.2415 15.9996 15.5043 15.8953 15.6978 15.7093C15.8915 15.5235 16.0002 15.2714 16 15.0085C16.0002 14.7458 15.8915 14.4937 15.698 14.3078L12.5681 11.2947C13.9283 9.5308 14.2998 7.23853 13.5616 5.1613C12.8236 3.08439 11.0702 1.48725 8.86994 0.888013C6.66989 0.288729 4.30337 0.763496 2.53789 2.15874C0.772543 3.55382 -0.16685 5.69131 0.0244658 7.87791L0.0247006 7.87823ZM6.96867 2.62946C8.26895 2.62946 9.51591 3.12511 10.4353 4.00726C11.3547 4.88941 11.8713 6.08607 11.8713 7.33363C11.8713 8.58119 11.3547 9.77768 10.4353 10.6598C9.51591 11.542 8.2689 12.0376 6.96867 12.0376C5.66844 12.0376 4.42124 11.542 3.50184 10.6598C2.58245 9.77768 2.06587 8.58119 2.06587 7.33363C2.06587 6.08607 2.58245 4.88941 3.50184 4.00726C4.42124 3.12511 5.66844 2.62946 6.96867 2.62946Z" />
+            </svg>
+        </div>
+        <div class="new" [routerLink]="['/app/create-inspection']">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6 12H18M12 18V6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Adicionar novo</p>
+        </div>
+    </div>
+    <div class="manage-inspections__filter">
+        <form [formGroup]="veihcleForm">
+            <input                               
+            formControlName="veihcle"
+            [typeahead]="veihcle"
+            (clear)="onClearVeihcleForm($event)"
+            (focus)="veihcleForm.patchValue({ veihcle: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Tipo de veiculo"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+        <form [formGroup]="situationForm">
+            <input             
+            formControlName="situation"
+            [typeahead]="situation"
+            (clear)="onClearSituationForm($event)"
+            (focus)="situationForm.patchValue({ situation: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Situação"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+        <form [formGroup]="agentForm">
+            <input             
+            formControlName="agent"
+            [typeahead]="agent"
+            (clear)="onClearAgentForm($event)"
+            (focus)="agentForm.patchValue({ agent: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Agente"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+        <form [formGroup]="sinisterForm">
+            <input             
+            formControlName="sinister"
+            [typeahead]="sinister"
+            (clear)="onClearSinisterForm($event)"
+            (focus)="sinisterForm.patchValue({ sinister: '' })"
+            [typeaheadMinLength]="0"
+            placeholder="Sinistro"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </form>
+    </div>
+    <div class="manage-inspections__lista">
+        <div class="item title">
+            <div>
+                <label class="check">
+                    <input type="checkbox">
+                    <div class="content"></div>
+                </label>
+            </div>   
+            <label>Data</label>
+            <label>Agente</label>
+            <label>Tipo</label>
+            <label>Marca</label>
+            <label>Condutor</label>
+            <label>Situação</label>
+            <label>Ação</label>
+        </div>
+        <div class="item">
+            <div>
+                <label class="check">
+                    <input type="checkbox">
+                    <div class="content"></div>
+                </label>
+            </div>   
+            <div class="date">
+                <p>ENTROU EM</p>
+                <label>2023/08/09</label> 
+            </div>
+            <label class="ellipsis">Maldonado</label>
+            <label class="ellipsis">Carro</label>
+            <label>Ford</label>
+            <label>João</label>
+            <label class="situation courtyard">
+                <p></p>
+            </label>
+            <div class="actions">
+                <span data-tooltip="Detalhes" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9998 20.2697C15.5298 20.2697 18.8198 18.1897 21.1098 14.5897C22.0098 13.1797 22.0098 10.8097 21.1098 9.39973C18.8198 5.79973 15.5298 3.71973 11.9998 3.71973C8.46984 3.71973 5.17984 5.79973 2.88984 9.39973C1.98984 10.8097 1.98984 13.1797 2.88984 14.5897C5.17984 18.1897 8.46984 20.2697 11.9998 20.2697Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Imprimir" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7.25 7H16.75V5C16.75 3 16 2 13.75 2H10.25C8 2 7.25 3 7.25 5V7ZM16 15V19C16 21 15 22 13 22H11C9 22 8 21 8 19V15H16Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15H7M7 11H10M21 10V15C21 17 20 18 18 18H16V15H8V18H6C4 18 3 17 3 15V10C3 8 4 7 6 7H18C20 7 21 8 21 10Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Liberar" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.88868 17.4898L9.18868 19.7898M19.7887 14.9298C18.8122 15.9039 17.5882 16.5929 16.2489 16.9224C14.9096 17.252 13.5057 17.2096 12.1887 16.7998L7.47868 21.4998C7.13868 21.8498 6.46868 22.0598 5.98868 21.9898L3.80868 21.6898C3.08868 21.5898 2.41868 20.9098 2.30868 20.1898L2.00868 18.0098C1.93868 17.5298 2.16868 16.8598 2.49868 16.5198L7.19868 11.8198C6.39868 9.21982 7.01868 6.26982 9.07868 4.21982C12.0287 1.26982 16.8187 1.26982 19.7787 4.21982C22.7387 7.16982 22.7387 11.9798 19.7887 14.9298Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 11C14.8978 11 15.2794 10.842 15.5607 10.5607C15.842 10.2794 16 9.89782 16 9.5C16 9.10218 15.842 8.72064 15.5607 8.43934C15.2794 8.15804 14.8978 8 14.5 8C14.1022 8 13.7206 8.15804 13.4393 8.43934C13.158 8.72064 13 9.10218 13 9.5C13 9.89782 13.158 10.2794 13.4393 10.5607C13.7206 10.842 14.1022 11 14.5 11Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="free__info">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path d="M14 2.625C11.7502 2.625 9.551 3.29213 7.68039 4.54203C5.80978 5.79193 4.35182 7.56847 3.49088 9.64698C2.62993 11.7255 2.40467 14.0126 2.84357 16.2192C3.28248 18.4257 4.36584 20.4525 5.95667 22.0433C7.54749 23.6342 9.57432 24.7175 11.7809 25.1564C13.9874 25.5953 16.2745 25.3701 18.353 24.5091C20.4315 23.6482 22.2081 22.1902 23.458 20.3196C24.7079 18.449 25.375 16.2498 25.375 14C25.3718 10.9841 24.1724 8.09271 22.0398 5.96018C19.9073 3.82764 17.0159 2.62818 14 2.625ZM13.5625 7.875C13.8221 7.875 14.0759 7.95198 14.2917 8.0962C14.5075 8.24041 14.6758 8.4454 14.7751 8.68523C14.8744 8.92506 14.9004 9.18896 14.8498 9.44356C14.7991 9.69816 14.6741 9.93202 14.4906 10.1156C14.307 10.2991 14.0732 10.4241 13.8186 10.4748C13.564 10.5254 13.3001 10.4994 13.0602 10.4001C12.8204 10.3008 12.6154 10.1325 12.4712 9.91669C12.327 9.70085 12.25 9.44709 12.25 9.1875C12.25 8.8394 12.3883 8.50556 12.6344 8.25942C12.8806 8.01328 13.2144 7.875 13.5625 7.875ZM14.875 20.125C14.4109 20.125 13.9658 19.9406 13.6376 19.6124C13.3094 19.2842 13.125 18.8391 13.125 18.375V14C12.8929 14 12.6704 13.9078 12.5063 13.7437C12.3422 13.5796 12.25 13.3571 12.25 13.125C12.25 12.8929 12.3422 12.6704 12.5063 12.5063C12.6704 12.3422 12.8929 12.25 13.125 12.25C13.5891 12.25 14.0343 12.4344 14.3624 12.7626C14.6906 13.0908 14.875 13.5359 14.875 14V18.375C15.1071 18.375 15.3296 18.4672 15.4937 18.6313C15.6578 18.7954 15.75 19.0179 15.75 19.25C15.75 19.4821 15.6578 19.7046 15.4937 19.8687C15.3296 20.0328 15.1071 20.125 14.875 20.125Z" fill="#08458C"/>
+                    </svg>
+                    <p>Esse veículo foi liberado pelo <strong>USUÁRIO BRUNO</strong>, em <strong>21/08/2024</strong>, as <strong>09 h:12</strong> min   |  <strong>Nº do documento: 15478</strong></p>
+                    <section>TAXA NÃO RECOLHIDA</section>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div>
+                <label class="check">
+                    <input type="checkbox">
+                    <div class="content"></div>
+                </label>
+            </div>   
+            <div class="date">
+                <p>ENTROU EM</p>
+                <label>2023/07/09</label> 
+            </div>
+            <label class="ellipsis">Nathan</label>
+            <label class="ellipsis">Moto</label>
+            <label>Honda</label>
+            <label>Henrique</label>
+            <label class="situation released">
+                <p></p>
+            </label>
+            <div class="actions">
+                <span data-tooltip="Detalhes" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9998 20.2697C15.5298 20.2697 18.8198 18.1897 21.1098 14.5897C22.0098 13.1797 22.0098 10.8097 21.1098 9.39973C18.8198 5.79973 15.5298 3.71973 11.9998 3.71973C8.46984 3.71973 5.17984 5.79973 2.88984 9.39973C1.98984 10.8097 1.98984 13.1797 2.88984 14.5897C5.17984 18.1897 8.46984 20.2697 11.9998 20.2697Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Imprimir" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7.25 7H16.75V5C16.75 3 16 2 13.75 2H10.25C8 2 7.25 3 7.25 5V7ZM16 15V19C16 21 15 22 13 22H11C9 22 8 21 8 19V15H16Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15H7M7 11H10M21 10V15C21 17 20 18 18 18H16V15H8V18H6C4 18 3 17 3 15V10C3 8 4 7 6 7H18C20 7 21 8 21 10Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Liberar" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.88868 17.4898L9.18868 19.7898M19.7887 14.9298C18.8122 15.9039 17.5882 16.5929 16.2489 16.9224C14.9096 17.252 13.5057 17.2096 12.1887 16.7998L7.47868 21.4998C7.13868 21.8498 6.46868 22.0598 5.98868 21.9898L3.80868 21.6898C3.08868 21.5898 2.41868 20.9098 2.30868 20.1898L2.00868 18.0098C1.93868 17.5298 2.16868 16.8598 2.49868 16.5198L7.19868 11.8198C6.39868 9.21982 7.01868 6.26982 9.07868 4.21982C12.0287 1.26982 16.8187 1.26982 19.7787 4.21982C22.7387 7.16982 22.7387 11.9798 19.7887 14.9298Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 11C14.8978 11 15.2794 10.842 15.5607 10.5607C15.842 10.2794 16 9.89782 16 9.5C16 9.10218 15.842 8.72064 15.5607 8.43934C15.2794 8.15804 14.8978 8 14.5 8C14.1022 8 13.7206 8.15804 13.4393 8.43934C13.158 8.72064 13 9.10218 13 9.5C13 9.89782 13.158 10.2794 13.4393 10.5607C13.7206 10.842 14.1022 11 14.5 11Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="free__info">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path d="M14 2.625C11.7502 2.625 9.551 3.29213 7.68039 4.54203C5.80978 5.79193 4.35182 7.56847 3.49088 9.64698C2.62993 11.7255 2.40467 14.0126 2.84357 16.2192C3.28248 18.4257 4.36584 20.4525 5.95667 22.0433C7.54749 23.6342 9.57432 24.7175 11.7809 25.1564C13.9874 25.5953 16.2745 25.3701 18.353 24.5091C20.4315 23.6482 22.2081 22.1902 23.458 20.3196C24.7079 18.449 25.375 16.2498 25.375 14C25.3718 10.9841 24.1724 8.09271 22.0398 5.96018C19.9073 3.82764 17.0159 2.62818 14 2.625ZM13.5625 7.875C13.8221 7.875 14.0759 7.95198 14.2917 8.0962C14.5075 8.24041 14.6758 8.4454 14.7751 8.68523C14.8744 8.92506 14.9004 9.18896 14.8498 9.44356C14.7991 9.69816 14.6741 9.93202 14.4906 10.1156C14.307 10.2991 14.0732 10.4241 13.8186 10.4748C13.564 10.5254 13.3001 10.4994 13.0602 10.4001C12.8204 10.3008 12.6154 10.1325 12.4712 9.91669C12.327 9.70085 12.25 9.44709 12.25 9.1875C12.25 8.8394 12.3883 8.50556 12.6344 8.25942C12.8806 8.01328 13.2144 7.875 13.5625 7.875ZM14.875 20.125C14.4109 20.125 13.9658 19.9406 13.6376 19.6124C13.3094 19.2842 13.125 18.8391 13.125 18.375V14C12.8929 14 12.6704 13.9078 12.5063 13.7437C12.3422 13.5796 12.25 13.3571 12.25 13.125C12.25 12.8929 12.3422 12.6704 12.5063 12.5063C12.6704 12.3422 12.8929 12.25 13.125 12.25C13.5891 12.25 14.0343 12.4344 14.3624 12.7626C14.6906 13.0908 14.875 13.5359 14.875 14V18.375C15.1071 18.375 15.3296 18.4672 15.4937 18.6313C15.6578 18.7954 15.75 19.0179 15.75 19.25C15.75 19.4821 15.6578 19.7046 15.4937 19.8687C15.3296 20.0328 15.1071 20.125 14.875 20.125Z" fill="#08458C"/>
+                    </svg>
+                    <p>Esse veículo foi liberado pelo <strong>USUÁRIO BRUNO</strong>, em <strong>21/08/2024</strong>, as <strong>09 h:12</strong> min   |  <strong>Nº do documento: 15478</strong></p>
+                    <section>TAXA NÃO RECOLHIDA</section>
+                </div>
+            </div>
+        </div>
+        <div class="item free norates">
+            <div>
+                <label class="check">
+                    <input type="checkbox">
+                    <div class="content"></div>
+                </label>
+            </div>   
+            <div class="date">
+                <p>ENTROU EM</p>
+                <label>2023/08/09</label> 
+            </div>
+            <label class="ellipsis">Darlinson</label>
+            <label class="ellipsis">Carro</label>
+            <label>Fiat</label>
+            <label>Alysson</label>
+            <label class="situation courtyard">
+                <p></p>
+            </label>
+            <div class="actions">
+                <span data-tooltip="Detalhes" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9998 20.2697C15.5298 20.2697 18.8198 18.1897 21.1098 14.5897C22.0098 13.1797 22.0098 10.8097 21.1098 9.39973C18.8198 5.79973 15.5298 3.71973 11.9998 3.71973C8.46984 3.71973 5.17984 5.79973 2.88984 9.39973C1.98984 10.8097 1.98984 13.1797 2.88984 14.5897C5.17984 18.1897 8.46984 20.2697 11.9998 20.2697Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Imprimir" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7.25 7H16.75V5C16.75 3 16 2 13.75 2H10.25C8 2 7.25 3 7.25 5V7ZM16 15V19C16 21 15 22 13 22H11C9 22 8 21 8 19V15H16Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15H7M7 11H10M21 10V15C21 17 20 18 18 18H16V15H8V18H6C4 18 3 17 3 15V10C3 8 4 7 6 7H18C20 7 21 8 21 10Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Liberar" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.88868 17.4898L9.18868 19.7898M19.7887 14.9298C18.8122 15.9039 17.5882 16.5929 16.2489 16.9224C14.9096 17.252 13.5057 17.2096 12.1887 16.7998L7.47868 21.4998C7.13868 21.8498 6.46868 22.0598 5.98868 21.9898L3.80868 21.6898C3.08868 21.5898 2.41868 20.9098 2.30868 20.1898L2.00868 18.0098C1.93868 17.5298 2.16868 16.8598 2.49868 16.5198L7.19868 11.8198C6.39868 9.21982 7.01868 6.26982 9.07868 4.21982C12.0287 1.26982 16.8187 1.26982 19.7787 4.21982C22.7387 7.16982 22.7387 11.9798 19.7887 14.9298Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 11C14.8978 11 15.2794 10.842 15.5607 10.5607C15.842 10.2794 16 9.89782 16 9.5C16 9.10218 15.842 8.72064 15.5607 8.43934C15.2794 8.15804 14.8978 8 14.5 8C14.1022 8 13.7206 8.15804 13.4393 8.43934C13.158 8.72064 13 9.10218 13 9.5C13 9.89782 13.158 10.2794 13.4393 10.5607C13.7206 10.842 14.1022 11 14.5 11Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="free__info">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path d="M14 2.625C11.7502 2.625 9.551 3.29213 7.68039 4.54203C5.80978 5.79193 4.35182 7.56847 3.49088 9.64698C2.62993 11.7255 2.40467 14.0126 2.84357 16.2192C3.28248 18.4257 4.36584 20.4525 5.95667 22.0433C7.54749 23.6342 9.57432 24.7175 11.7809 25.1564C13.9874 25.5953 16.2745 25.3701 18.353 24.5091C20.4315 23.6482 22.2081 22.1902 23.458 20.3196C24.7079 18.449 25.375 16.2498 25.375 14C25.3718 10.9841 24.1724 8.09271 22.0398 5.96018C19.9073 3.82764 17.0159 2.62818 14 2.625ZM13.5625 7.875C13.8221 7.875 14.0759 7.95198 14.2917 8.0962C14.5075 8.24041 14.6758 8.4454 14.7751 8.68523C14.8744 8.92506 14.9004 9.18896 14.8498 9.44356C14.7991 9.69816 14.6741 9.93202 14.4906 10.1156C14.307 10.2991 14.0732 10.4241 13.8186 10.4748C13.564 10.5254 13.3001 10.4994 13.0602 10.4001C12.8204 10.3008 12.6154 10.1325 12.4712 9.91669C12.327 9.70085 12.25 9.44709 12.25 9.1875C12.25 8.8394 12.3883 8.50556 12.6344 8.25942C12.8806 8.01328 13.2144 7.875 13.5625 7.875ZM14.875 20.125C14.4109 20.125 13.9658 19.9406 13.6376 19.6124C13.3094 19.2842 13.125 18.8391 13.125 18.375V14C12.8929 14 12.6704 13.9078 12.5063 13.7437C12.3422 13.5796 12.25 13.3571 12.25 13.125C12.25 12.8929 12.3422 12.6704 12.5063 12.5063C12.6704 12.3422 12.8929 12.25 13.125 12.25C13.5891 12.25 14.0343 12.4344 14.3624 12.7626C14.6906 13.0908 14.875 13.5359 14.875 14V18.375C15.1071 18.375 15.3296 18.4672 15.4937 18.6313C15.6578 18.7954 15.75 19.0179 15.75 19.25C15.75 19.4821 15.6578 19.7046 15.4937 19.8687C15.3296 20.0328 15.1071 20.125 14.875 20.125Z" fill="#08458C"/>
+                    </svg>
+                    <p>Esse veículo foi liberado pelo <strong>USUÁRIO BRUNO</strong>, em <strong>21/08/2024</strong>, as <strong>09 h:12</strong> min   |  <strong>Nº do documento: 15478</strong></p>
+                    <section>TAXA NÃO RECOLHIDA</section>
+                </div>
+            </div>
+        </div>
+        <div class="item free">
+            <div>
+                <label class="check">
+                    <input type="checkbox">
+                    <div class="content"></div>
+                </label>
+            </div>   
+            <div class="date">
+                <p>ENTROU EM</p>
+                <label>2023/07/09</label> 
+            </div>
+            <label class="ellipsis">Bruno</label>
+            <label class="ellipsis">Moto</label>
+            <label>Honda</label>
+            <label>Josémalysson</label>
+            <label class="situation released">
+                <p></p>
+            </label>
+            <div class="actions">
+                <span data-tooltip="Detalhes" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15.5819 11.9999C15.5819 13.9799 13.9819 15.5799 12.0019 15.5799C10.0219 15.5799 8.42188 13.9799 8.42188 11.9999C8.42188 10.0199 10.0219 8.41992 12.0019 8.41992C13.9819 8.41992 15.5819 10.0199 15.5819 11.9999Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9998 20.2697C15.5298 20.2697 18.8198 18.1897 21.1098 14.5897C22.0098 13.1797 22.0098 10.8097 21.1098 9.39973C18.8198 5.79973 15.5298 3.71973 11.9998 3.71973C8.46984 3.71973 5.17984 5.79973 2.88984 9.39973C1.98984 10.8097 1.98984 13.1797 2.88984 14.5897C5.17984 18.1897 8.46984 20.2697 11.9998 20.2697Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Imprimir" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7.25 7H16.75V5C16.75 3 16 2 13.75 2H10.25C8 2 7.25 3 7.25 5V7ZM16 15V19C16 21 15 22 13 22H11C9 22 8 21 8 19V15H16Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15H7M7 11H10M21 10V15C21 17 20 18 18 18H16V15H8V18H6C4 18 3 17 3 15V10C3 8 4 7 6 7H18C20 7 21 8 21 10Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span data-tooltip="Liberar" data-flow="top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.88868 17.4898L9.18868 19.7898M19.7887 14.9298C18.8122 15.9039 17.5882 16.5929 16.2489 16.9224C14.9096 17.252 13.5057 17.2096 12.1887 16.7998L7.47868 21.4998C7.13868 21.8498 6.46868 22.0598 5.98868 21.9898L3.80868 21.6898C3.08868 21.5898 2.41868 20.9098 2.30868 20.1898L2.00868 18.0098C1.93868 17.5298 2.16868 16.8598 2.49868 16.5198L7.19868 11.8198C6.39868 9.21982 7.01868 6.26982 9.07868 4.21982C12.0287 1.26982 16.8187 1.26982 19.7787 4.21982C22.7387 7.16982 22.7387 11.9798 19.7887 14.9298Z"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14.5 11C14.8978 11 15.2794 10.842 15.5607 10.5607C15.842 10.2794 16 9.89782 16 9.5C16 9.10218 15.842 8.72064 15.5607 8.43934C15.2794 8.15804 14.8978 8 14.5 8C14.1022 8 13.7206 8.15804 13.4393 8.43934C13.158 8.72064 13 9.10218 13 9.5C13 9.89782 13.158 10.2794 13.4393 10.5607C13.7206 10.842 14.1022 11 14.5 11Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="free__info">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path d="M14 2.625C11.7502 2.625 9.551 3.29213 7.68039 4.54203C5.80978 5.79193 4.35182 7.56847 3.49088 9.64698C2.62993 11.7255 2.40467 14.0126 2.84357 16.2192C3.28248 18.4257 4.36584 20.4525 5.95667 22.0433C7.54749 23.6342 9.57432 24.7175 11.7809 25.1564C13.9874 25.5953 16.2745 25.3701 18.353 24.5091C20.4315 23.6482 22.2081 22.1902 23.458 20.3196C24.7079 18.449 25.375 16.2498 25.375 14C25.3718 10.9841 24.1724 8.09271 22.0398 5.96018C19.9073 3.82764 17.0159 2.62818 14 2.625ZM13.5625 7.875C13.8221 7.875 14.0759 7.95198 14.2917 8.0962C14.5075 8.24041 14.6758 8.4454 14.7751 8.68523C14.8744 8.92506 14.9004 9.18896 14.8498 9.44356C14.7991 9.69816 14.6741 9.93202 14.4906 10.1156C14.307 10.2991 14.0732 10.4241 13.8186 10.4748C13.564 10.5254 13.3001 10.4994 13.0602 10.4001C12.8204 10.3008 12.6154 10.1325 12.4712 9.91669C12.327 9.70085 12.25 9.44709 12.25 9.1875C12.25 8.8394 12.3883 8.50556 12.6344 8.25942C12.8806 8.01328 13.2144 7.875 13.5625 7.875ZM14.875 20.125C14.4109 20.125 13.9658 19.9406 13.6376 19.6124C13.3094 19.2842 13.125 18.8391 13.125 18.375V14C12.8929 14 12.6704 13.9078 12.5063 13.7437C12.3422 13.5796 12.25 13.3571 12.25 13.125C12.25 12.8929 12.3422 12.6704 12.5063 12.5063C12.6704 12.3422 12.8929 12.25 13.125 12.25C13.5891 12.25 14.0343 12.4344 14.3624 12.7626C14.6906 13.0908 14.875 13.5359 14.875 14V18.375C15.1071 18.375 15.3296 18.4672 15.4937 18.6313C15.6578 18.7954 15.75 19.0179 15.75 19.25C15.75 19.4821 15.6578 19.7046 15.4937 19.8687C15.3296 20.0328 15.1071 20.125 14.875 20.125Z" fill="#08458C"/>
+                    </svg>
+                    <p>Esse veículo foi liberado pelo <strong>USUÁRIO BRUNO</strong>, em <strong>21/08/2024</strong>, as <strong>09 h:12</strong> min   |  <strong>Nº do documento: 15478</strong></p>
+                    <section>TAXA NÃO RECOLHIDA</section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

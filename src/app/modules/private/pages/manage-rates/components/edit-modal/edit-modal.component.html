@@ -1,0 +1,23 @@
+<div class="edit">
+    <div class="edit__header">
+        <h1>Editar taxa</h1>
+        <svg (click)="bsModalRef.hide()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 6L18 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <form class="edit__content">
+        <section>
+            <label>
+                <h1>Valor da diária para carros *</h1>
+                <input type="number" placeholder="ex: R$ 5,25">
+            </label>
+            <label class="toggle">
+                <h1>Status *</h1>
+                <input type="checkbox" id="toggle-edit" class="toggle-input">
+                <label for="toggle-edit" class="toggle-label"></label>
+            </label>
+            <input class="submit" type="submit" value="Salvar alterações" (click)="bsModalRef.hide()">
+        </section>
+    </form>
+</div>

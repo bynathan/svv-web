@@ -1,0 +1,8 @@
+<div class="confirm" >
+    <h1>Salvar registro?</h1>
+    <p>Deseja mesmo concluir e salvar esse registro?<br><strong>Lembre-se, depois de salvar não será mais possível editar essas informações.</strong></p>
+    <div class="confirm__actions">
+        <input type="button" value="Sim, quero salvar" class="submit" [routerLink]="['/app/created']" (click)="bsModalRef.hide()">
+        <a (click)="bsModalRef.hide()">Não, quero continuar editando</a>
+    </div>
+</div>

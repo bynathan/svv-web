@@ -1,0 +1,225 @@
+@import "../../../../../scss/variables.scss";
+
+.edit-user{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 774px;
+    margin: 47px auto 100px;
+    animation: enterContentAnimation 0.6s ease-in-out;
+    &__title{
+        color: $text-color;
+        font-family: 'Inter', sans-serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        width: unset;
+        margin: 0 0 45px 0;
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 40px;
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 16px;
+            h2{
+                color: $text-color;
+                font-family: 'Inter', sans-serif;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin: 0;
+            }
+            section{
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+                label{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    position: relative;
+                    row-gap: 8px;
+                    max-width: 377px;
+                    h1{
+                        color: $text-color;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        margin: 0;
+                    }
+                    input{
+                        min-height: 48px;
+                        border-radius: 12px;
+                        border: 1px solid $gray-disabled;
+                        padding: 15px 15px 16px;
+                        color: $primary-color;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                        &:disabled{
+                            background: $primary-color-disabled;
+                            border: 1px solid $primary-color-disabled;
+                            color: $text-color-disabled;
+                            z-index: -1;
+                            cursor: not-allowed;
+                            & ~ svg{
+                                cursor: not-allowed;
+                            }
+                        }
+                        &:focus{
+                            border: 1px solid $primary-color;
+                            outline: 1px solid $primary-color;;
+                            box-shadow: unset;
+                            color: $primary-color;
+                            & ~ .select{
+                                stroke: $primary-color;
+                                transform: rotate(180deg);
+                            }
+                            & ~ .quantity-character{
+                                color: $primary-color;
+                            }
+                            &::placeholder{
+                                color: $primary-color;
+                            }
+                            & ~ .showorocult{
+                                svg{
+                                    stroke: $primary-color;
+                                }
+                            }
+                        }
+                        &::placeholder{
+                            color: $gray-placeholder;
+                            font-family: 'Inter', sans-serif;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                        }
+                    }
+                    button{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        column-gap: 8px;
+                        min-height: 48px;
+                        border-radius: 12px;
+                        padding: 15px 15px 16px;
+                        color: $primary-color;
+                        transition: all .2s;
+                        svg{
+                            width: 24px;
+                            min-width: 24px;
+                            height: 24px;
+                            min-height: 24px;
+                            stroke: $primary-color;
+                            transition: stroke .2s;
+                        }
+                        &.edit-itens{
+                            border: 1px solid $primary-color;
+                            outline: 1px solid $primary-color;
+                            background: transparent;
+                            p{
+                                color: $primary-color;
+                                font-family: 'Inter';
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 600;
+                                line-height: normal;
+                                width: unset;
+                                margin: 0;
+                                transition: color .2s;
+                            }
+                            &:hover{
+                                border: 1px solid $primary-color;
+                                outline: 1px solid $primary-color;
+                                background: $primary-color;
+                                p{
+                                    color: $white;
+                                }
+                                svg{
+                                    stroke: $white;
+                                }
+                            }
+                        }
+                    }
+                    svg{
+                        width: 24px;
+                        min-width: 24px;
+                        height: 24px;
+                        min-height: 24px;
+                        position: absolute;
+                        top: 43px;
+                        right: 15px;
+                        stroke: $gray-placeholder;
+                        cursor: pointer;
+                        transition: stroke .2s;
+                        &:hover{
+                            stroke: $primary-color
+                        }
+                    }
+                }
+            }
+        }
+        .submit{
+            margin: 40px auto 0 0;
+            max-width: 278px;
+            font-size: 14px !important;
+        }
+    }
+}
+
+@media(max-width: 935px){
+    .edit-user{
+        padding: 0 15px 0 86px;
+        &__content{
+            div{
+                section{
+                    label{
+                        max-width: unset;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 631px){
+    .edit-user{
+        margin: 43px auto 100px;
+        padding: 0 15px;
+        &__title{
+            margin: 0 0 45px 55px;
+        }
+    }
+}
+
+@media(max-width: 480px){
+    .edit-user{
+        margin: 47px auto 100px;
+        &__title{
+            font-size: 24px;
+        }
+        &__content{
+            div:nth-child(1){
+                section{
+                    flex-direction: column;
+                    row-gap: 16px;
+                }
+            }
+            .submit{
+                max-width: unset !important;
+            }
+        }
+    }
+}

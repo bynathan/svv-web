@@ -1,0 +1,86 @@
+<div class="register-user">
+    <div class="register-user__header">
+        <h1>Novo usuário</h1>
+        <p>Campos com (*) são de preenchimento obrigatório.</p>
+    </div>
+    <div class="register-user__form">
+        <form>
+            <h1>Dados de acesso</h1>
+            <section class="first">
+                <label>
+                    <h1>Número do CPF *</h1>
+                    <input type="text" placeholder="Digite apenas número" (input)="cpfMask($event)">
+                </label>
+                <label>
+                    <h1>E-mail *</h1>
+                    <input type="text" placeholder="ex: joaodasila@gmail.com">
+                </label>
+            </section>
+            <section>
+                <label>
+                    <h1>Crie uma senha *</h1>
+                    <input type="text" placeholder="Com pelo menos 6 caracteres">
+                </label>
+                <label>
+                    <h1>Repita a senha *</h1>
+                    <input type="text" placeholder="Repita a senha criada anteriormente">
+                </label>
+            </section>
+            <h1>Dados do agente</h1>
+            <section>
+                <label>
+                    <h1>Patente *</h1>
+                    <form [formGroup]="pttForm">
+                        <input
+                          formControlName="ptt"
+                          [typeahead]="ptt"
+                          (clear)="onClearPttForm($event)"
+                          (focus)="pttForm.patchValue({ ptt: '' })"
+                          [typeaheadMinLength]="0"
+                          placeholder="Selecionar"
+                        >
+                        <svg class="select" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M19.9201 8.9502L13.4001 15.4702C12.6301 16.2402 11.3701 16.2402 10.6001 15.4702L4.08008 8.9502" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </form>
+                </label>
+                <label>
+                    <h1>Nome *</h1>
+                    <input type="text" placeholder="ex: João">
+                </label>
+                <label>
+                    <h1>Sobrenome *</h1>
+                    <input type="text" placeholder="ex: da Silva">
+                </label>
+            </section>
+            <h1 class="mgb">Nível do usuário</h1>
+            <section class="framelevel press">
+                <div>
+                    <label>
+                        <input type="radio" name="level">
+                        <p>Esse usuário tem acesso a todas as funcionalidades do sistema, incluindo criar vistorias, liberar veículos, ver relatórios e gerenciar usuários.</p>
+                        <div class="content"></div>
+                    </label>
+                    <label>
+                        <input type="radio" name="level">
+                        <p>Esse usuário só poderá criar vistorias.</p>
+                        <div class="content"></div>
+                    </label>
+                    <label>
+                        <input type="radio" name="level">
+                        <p>Esse usuário poderá criar vistorias, liberar veículos e ver relatórios.</p>
+                        <div class="content"></div>
+                    </label>
+                </div>
+            </section>
+            <section>
+                <label class="toggle">
+                    <h1>Status *</h1>
+                    <input type="checkbox" id="toggle" class="toggle-input">
+                    <label for="toggle" class="toggle-label"></label>
+                </label>
+            </section>
+            <input class="submit" type="button" value="Criar novo usuário">
+        </form>
+    </div>
+</div>

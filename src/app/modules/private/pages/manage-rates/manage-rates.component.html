@@ -1,0 +1,66 @@
+<div class="manage-rates">
+    <h1 class="manage-rates__title">Gerenciar taxas</h1>
+    <div class="manage-rates__lista">
+        <div class="item title">
+          <label>Criado em</label>
+          <label>Usuário</label>
+          <label>Valor</label>
+          <label>Tipo</label>
+          <label></label>
+          <label>Situação</label>
+          <label>Ação</label>
+        </div>
+        <div class="item">
+          <label>2023/08/09</label>
+          <label class="ellipsis">João</label>
+          <label class="ellipsis">$100</label>
+          <label>Carro</label>
+          <label></label>
+          <div>
+            <label class="toggle">
+                <input type="checkbox" id="toggle2" class="toggle-input" checked>
+                <label for="toggle2" class="toggle-label"></label>
+            </label>
+          </div>
+          <div class="actions">
+            <span data-tooltip="Editar" data-flow="top">
+                <svg (click)="openEditModal()"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M13.2594 3.60022L5.04936 12.2902C4.73936 12.6202 4.43936 13.2702 4.37936 13.7202L4.00936 16.9602C3.87936 18.1302 4.71936 18.9302 5.87936 18.7302L9.09936 18.1802C9.54936 18.1002 10.1794 17.7702 10.4894 17.4302L18.6994 8.74022C20.1194 7.24022 20.7594 5.53022 18.5494 3.44022C16.3494 1.37022 14.6794 2.10022 13.2594 3.60022Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.89 5.0498C12.0996 6.39066 12.7486 7.62394 13.735 8.55605C14.7214 9.48816 15.9894 10.0663 17.34 10.1998M3 21.9998H21" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            <!-- <span data-tooltip="Deletar" data-flow="top">
+                <svg (click)="openDeleteConfirmModal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 5.98C17.67 5.65 14.32 5.48 10.98 5.48C9 5.48 7.02 5.58 5.04 5.78L3 5.98M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97M18.85 9.14L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5H13.66M9.5 12.5H14.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span> -->
+          </div>
+        </div>
+        <div class="item">
+        <label>2023/08/09</label>
+        <label class="ellipsis">Pedro</label>
+        <label class="ellipsis">$200</label>
+        <label>Moto</label>
+        <label></label>
+        <div>
+          <label class="toggle">
+              <input type="checkbox" id="toggle" class="toggle-input">
+              <label for="toggle" class="toggle-label"></label>
+          </label>
+        </div>
+        <div class="actions">
+          <span data-tooltip="Editar" data-flow="top">
+              <svg (click)="openEditModal()"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13.2594 3.60022L5.04936 12.2902C4.73936 12.6202 4.43936 13.2702 4.37936 13.7202L4.00936 16.9602C3.87936 18.1302 4.71936 18.9302 5.87936 18.7302L9.09936 18.1802C9.54936 18.1002 10.1794 17.7702 10.4894 17.4302L18.6994 8.74022C20.1194 7.24022 20.7594 5.53022 18.5494 3.44022C16.3494 1.37022 14.6794 2.10022 13.2594 3.60022Z" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11.89 5.0498C12.0996 6.39066 12.7486 7.62394 13.735 8.55605C14.7214 9.48816 15.9894 10.0663 17.34 10.1998M3 21.9998H21" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </span>
+          <!-- <span data-tooltip="Deletar" data-flow="top">
+              <svg (click)="openDeleteConfirmModal()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 5.98C17.67 5.65 14.32 5.48 10.98 5.48C9 5.48 7.02 5.58 5.04 5.78L3 5.98M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97M18.85 9.14L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5H13.66M9.5 12.5H14.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          </span> -->
+        </div>
+      </div>
+      </div>
+</div>
